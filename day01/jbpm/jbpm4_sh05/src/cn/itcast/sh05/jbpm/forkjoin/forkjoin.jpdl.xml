@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process name="forkjoin" xmlns="http://jbpm.org/4.4/jpdl">
+   <start name="start1" g="384,15,48,48">
+      <transition name="to fork1" to="fork1" g="-53,-17"/>
+   </start>
+   <end name="end1" g="369,429,48,48"/>
+   <task name="task1" g="211,145,92,52">
+      <transition name="to task3" to="task3" g="-53,-17"/>
+   </task>
+   <task name="task2" g="463,150,92,52">
+      <transition name="to task4" to="task4" g="30,-18"/>
+   </task>
+   <task name="task3" g="198,270,92,52">
+      <transition name="to join1" to="join1" g="-82,13"/>
+   </task>
+   <task name="task4" g="476,263,92,52">
+      <transition name="to join1" to="join1" g="39,16"/>
+   </task>
+   <fork name="fork1" g="383,81,48,48">
+      <transition name="to task1" to="task1" g="-53,-17"/>
+      <transition name="to task2" to="task2" g="8,-15"/>
+   </fork>
+   <join name="join1" g="352,317,48,48">
+      <transition name="to end1" to="end1" g="-47,-17"/>
+   </join>
+</process>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process name="task3" xmlns="http://jbpm.org/4.4/jpdl">
+   <start name="start1" g="219,75,48,48">
+      <transition name="to task1" to="task1" g="-53,-17"/>
+   </start>
+   <end name="end1" g="329,341,48,48"/>
+   <task name="task1" g="215,199,92,52">
+   	  <assignment-handler class="cn.itcast.sh05.jbpm.task.MyAssignmentHandler"></assignment-handler>
+      <transition name="to end1" to="end1" g="-47,-17"/>
+   </task>
+</process>

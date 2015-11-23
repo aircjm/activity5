@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process name="grouptask" xmlns="http://jbpm.org/4.4/jpdl">
+   <start name="start1" g="195,54,48,48">
+      <transition name="to task1" to="task1" g="-53,-17"/>
+   </start>
+   <end name="end1" g="334,328,48,48"/>
+   <task name="task1" g="237,188,92,52" candidate-users="工程师1,工程师2,工程师3">
+      <transition name="to end1" to="end1" g="-47,-17"/>
+   </task>
+</process>

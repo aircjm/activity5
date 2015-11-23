@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process name="swimlane" xmlns="http://jbpm.org/4.4/jpdl">
+   <swimlane name="a" assignee="aaa"></swimlane>
+   <start name="start1" g="332,44,48,48">
+      <transition name="to task1" to="task1" g="-53,-17"/>
+   </start>
+   <end name="end1" g="458,312,48,48"/>
+   <task name="task1" g="196,150,92,52" swimlane="a">
+      <transition name="to task2" to="task2" g="-95,6"/>
+   </task>
+   <task name="task2" g="351,216,92,52" swimlane="a">
+      <transition name="to end1" to="end1" g="-56,-4"/>
+   </task>
+</process>

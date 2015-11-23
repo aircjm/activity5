@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process name="event" xmlns="http://jbpm.org/4.4/jpdl">
+	<!-- 
+		流程级别的开始事件
+	 -->
+   <on event="start">
+    <event-listener class="cn.itcast.sh05.jbpm.event.ProcessStartEvent">
+    </event-listener>
+  </on>
+  	<!-- 
+  		流程级别的结束事件
+  	 -->
+  	<on event="end">
+      <event-listener class="cn.itcast.sh05.jbpm.event.ProcessEndEvent">
+      </event-listener>
+    </on>
+   <!-- 
+   	  开始节点只有结束事件
+    -->
+   <start name="start1" g="309,63,48,48">
+   	  <on event="end">
+   	  	 <event-listener class="cn.itcast.sh05.jbpm.event.StartNodeEndEvent"></event-listener>
+   	  </on>
+      <transition name="to task1" to="task1" g="-67,-9"/>
+   </start>
+   <!--
+   	  结束节点只有开始事件
+   -->
+   <end name="end1" g="363,312,48,48">
+   	 <on event="start">
+   	 	<event-listener class="cn.itcast.sh05.jbpm.event.EndNodeStartEvent">
+      </event-listener>
+   	 </on>
+   </end>
+   <task name="task1" g="313,165,92,52">
+   	  <on event="start">
+   	  	<event-listener class="cn.itcast.sh05.jbpm.event.NodeStartEvent">
+      	</event-listener>
+   	  </on>
+   	  <on event="end">
+   	  	<event-listener class="cn.itcast.sh05.jbpm.event.NodeEndEvent">
+      </event-listener>
+   	  </on>
+      <transition name="to end1" to="end1" g="-70,0"/>
+   </task>
+</process>

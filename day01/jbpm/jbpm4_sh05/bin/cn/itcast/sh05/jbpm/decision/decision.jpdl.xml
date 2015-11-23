@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process name="decision" xmlns="http://jbpm.org/4.4/jpdl">
+   <start name="start1" g="283,40,48,48">
+      <transition name="to task1" to="task1" g="-53,-17"/>
+   </start>
+   <end name="end1" g="329,387,48,48"/>
+   <task name="task1" g="186,134,92,52">
+      <transition name="to exclusive1" to="exclusive1" g="-133,-9"/>
+   </task>
+   <task name="task2" g="456,271,92,52">
+      <transition name="to end1" to="end1" g="22,-19"/>
+   </task>
+   <decision name="exclusive1" g="290,234,48,48">
+   	  <handler class="cn.itcast.sh05.jbpm.decision.MyHandler" />
+      <transition name="to task2" to="task2" g="13,-29"/>
+      <transition name="to end1" to="end1" g="-78,-9"/>
+   </decision>
+</process>

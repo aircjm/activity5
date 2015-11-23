@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process name="task" xmlns="http://jbpm.org/4.4/jpdl">
+   <start name="start1" g="295,30,48,48">
+      <transition name="to 申请请假" to="申请请假" g="-71,-17"/>
+   </start>
+   <end name="end1" g="496,435,48,48"/>
+   <task name="申请请假" g="221,146,92,52" assignee="#{applicator}">
+      <transition name="to 部门经理审批" to="部门经理审批" g="-121,-8"/>
+   </task>
+   <task name="部门经理审批" g="298,255,92,52" assignee="#{manager}">
+      <transition name="to 总经理审批" to="总经理审批" g="-115,7"/>
+   </task>
+   <task name="总经理审批" g="390,338,92,52" assignee="张三">
+      <transition name="to end1" to="end1" g="-64,-2"/>
+   </task>
+</process>
