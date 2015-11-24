@@ -9,11 +9,11 @@ import org.activiti.engine.task.Task;
 import org.junit.Test;
 
 /**
- * piÊÇprocess instance  Á÷³ÌÊµÀı
+ * piæ˜¯process instance  æµç¨‹å®ä¾‹
  * @author zd
- *   1¡¢Æô¶¯Á÷³ÌÊµÀı
- *   2¡¢²éÑ¯ÈÎÎñ
- *   3¡¢Íê³ÉÈÎÎñ
+ *   1ã€å¯åŠ¨æµç¨‹å®ä¾‹
+ *   2ã€æŸ¥è¯¢ä»»åŠ¡
+ *   3ã€å®Œæˆä»»åŠ¡
  */
 public class PITest {
 	@Test
@@ -25,54 +25,54 @@ public class PITest {
 		.deploy();
 	}
 	/**
-	 * 1¡¢Éæ¼°µ½µÄ±í
+	 * 1ã€æ¶‰åŠåˆ°çš„è¡¨
 	 *      act_ru_execution
-	 *         1¡¢ËµÃ÷
-	 *              ±íÊ¾ÕıÔÚÔËĞĞµÄÁ÷³ÌÊµÀı
-	 *         2¡¢×Ö¶Î
-	 *              proc_inst_id  Á÷³ÌÊµÀıID
+	 *         1ã€è¯´æ˜
+	 *              è¡¨ç¤ºæ­£åœ¨è¿è¡Œçš„æµç¨‹å®ä¾‹
+	 *         2ã€å­—æ®µ
+	 *              proc_inst_id  æµç¨‹å®ä¾‹ID
 	 *              proc_def_id   pdid
-	 *              act_id        µ±Ç°½ÚµãµÄidÖµ
-	 *              is_active     µ±Ç°½ÚµãÊÇ·ñÊÇ»îÔ¾µÄ
+	 *              act_id        å½“å‰èŠ‚ç‚¹çš„idå€¼
+	 *              is_active     å½“å‰èŠ‚ç‚¹æ˜¯å¦æ˜¯æ´»è·ƒçš„
 	 *      act_ru_task
-	 *         1¡¢ËµÃ÷
-	 *              ±íÊ¾ÕıÔÚÔËĞĞµÄÈÎÎñ
-	 *         2¡¢×Ö¶Î
-	 *              id_:Ö÷¼ü   ÈÎÎñID
+	 *         1ã€è¯´æ˜
+	 *              è¡¨ç¤ºæ­£åœ¨è¿è¡Œçš„ä»»åŠ¡
+	 *         2ã€å­—æ®µ
+	 *              id_:ä¸»é”®   ä»»åŠ¡ID
 	 *              execution_id:piid
-	 *              name_:ÈÎÎñµÄÃû³Æ
-	 *              assignee_:ÈÎÎñµÄÖ´ĞĞÈË
+	 *              name_:ä»»åŠ¡çš„åç§°
+	 *              assignee_:ä»»åŠ¡çš„æ‰§è¡Œäºº
 	 *      act_hi_actinst   action instance
-	 *         1¡¢ËµÃ÷
-	 *              ±íÊ¾ÕıÔÚÔËĞĞ»òÕßÒÑ¾­ÔËĞĞÍê±ÏµÄ½Úµã
-	 *         2¡¢×Ö¶Î
-	 *              ID_£º½ÚµãID
-	 *              proc_def_id:Á÷³Ì¶¨ÒåID
-	 *              proc_inst_id:Á÷³ÌÊµÀıID
-	 *              execution_id:Èç¹û²»´æÔÚ²¢·¢µÄÇé¿öÏÂ£¬ºÍpiidÒ»Ñù
-	 *              act_id:µ±Ç°µÄ½ÚµãID
-	 *              act_name: µ±Ç°µÄ½ÚµãµÄÃû³Æ
+	 *         1ã€è¯´æ˜
+	 *              è¡¨ç¤ºæ­£åœ¨è¿è¡Œæˆ–è€…å·²ç»è¿è¡Œå®Œæ¯•çš„èŠ‚ç‚¹
+	 *         2ã€å­—æ®µ
+	 *              ID_ï¼šèŠ‚ç‚¹ID
+	 *              proc_def_id:æµç¨‹å®šä¹‰ID
+	 *              proc_inst_id:æµç¨‹å®ä¾‹ID
+	 *              execution_id:å¦‚æœä¸å­˜åœ¨å¹¶å‘çš„æƒ…å†µä¸‹ï¼Œå’Œpiidä¸€æ ·
+	 *              act_id:å½“å‰çš„èŠ‚ç‚¹ID
+	 *              act_name: å½“å‰çš„èŠ‚ç‚¹çš„åç§°
 	 *      act_hi_procinst  process instance
-	 *         1¡¢ËµÃ÷
-	 *              ±íÊ¾ÕıÔÚÔËĞĞ»òÕßÒÑ¾­Íê³ÉµÄÁ÷³ÌÊµÀı±í
-	 *         2¡¢×Ö¶Î
+	 *         1ã€è¯´æ˜
+	 *              è¡¨ç¤ºæ­£åœ¨è¿è¡Œæˆ–è€…å·²ç»å®Œæˆçš„æµç¨‹å®ä¾‹è¡¨
+	 *         2ã€å­—æ®µ
 	 *              end_act_id:
-	 *                  Èç¹ûÓĞÖµ£¬ËµÃ÷Á÷³ÌÊµÀı½áÊøÁË
-	 *                  Èç¹ûÎªnull,ËµÃ÷¸ÃÁ÷³ÌÊµÀıÕıÔÚ½øĞĞ
+	 *                  å¦‚æœæœ‰å€¼ï¼Œè¯´æ˜æµç¨‹å®ä¾‹ç»“æŸäº†
+	 *                  å¦‚æœä¸ºnull,è¯´æ˜è¯¥æµç¨‹å®ä¾‹æ­£åœ¨è¿›è¡Œ
 	 *      act_hi_taskinst
-	 *         1¡¢ËµÃ÷
-	 *              ±íÊ¾ÕıÔÚÖ´ĞĞµÄ»òÕßÒÑ¾­Íê³ÉµÄÈÎÎñ±í
-	 *         2¡¢×Ö¶Î
+	 *         1ã€è¯´æ˜
+	 *              è¡¨ç¤ºæ­£åœ¨æ‰§è¡Œçš„æˆ–è€…å·²ç»å®Œæˆçš„ä»»åŠ¡è¡¨
+	 *         2ã€å­—æ®µ
 	 *              delete_reason
-	 *                  É¾³ıÔ­Òò£ºÎªÊ²Ã´ÒªÉ¾³ıÕıÔÚÖ´ĞĞµÄÈÎÎñ
-	 *                      null  ±íÊ¾¸ÃÈÎÎñÃ»ÓĞ½áÊø
-	 *                      completed ±íÊ¾¸ÃÈÎÎñ½áÊøÁË
+	 *                  åˆ é™¤åŸå› ï¼šä¸ºä»€ä¹ˆè¦åˆ é™¤æ­£åœ¨æ‰§è¡Œçš„ä»»åŠ¡
+	 *                      null  è¡¨ç¤ºè¯¥ä»»åŠ¡æ²¡æœ‰ç»“æŸ
+	 *                      completed è¡¨ç¤ºè¯¥ä»»åŠ¡ç»“æŸäº†
 	 */
 	@Test
 	public void testStartPI(){
 		ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
 		ProcessInstance pi = processEngine.getRuntimeService()
-		  //.startProcessInstanceByKey(processDefinitionKey)  ¸ù¾İpdkeyÆô¶¯Á÷³ÌÊµÀı  Ä¬ÈÏ¸ù¾İ×î¸ß°æ±¾µÄÆô¶¯
+		  //.startProcessInstanceByKey(processDefinitionKey)  æ ¹æ®pdkeyå¯åŠ¨æµç¨‹å®ä¾‹  é»˜è®¤æ ¹æ®æœ€é«˜ç‰ˆæœ¬çš„å¯åŠ¨
 		 .startProcessInstanceById("qingjia:1:704");
 		System.out.println(pi.getId());
 		System.out.println(pi.getProcessInstanceId());
@@ -80,7 +80,7 @@ public class PITest {
 	}
 	
 	/**
-	 * ²éÑ¯ÕıÔÚÖ´ĞĞµÄÈÎÎñ
+	 * æŸ¥è¯¢æ­£åœ¨æ‰§è¡Œçš„ä»»åŠ¡
 	 */
 	@Test
 	public void testQueryTask(){
@@ -95,14 +95,14 @@ public class PITest {
 	}
 	
 	/**
-	 * ¿ÉÒÔ¸ù¾İÈÎÎñµÄÖ´ĞĞÈË²éÑ¯µ±Ç°ÕıÔÚÖ´ĞĞµÄÈÎÎñ
+	 * å¯ä»¥æ ¹æ®ä»»åŠ¡çš„æ‰§è¡ŒäººæŸ¥è¯¢å½“å‰æ­£åœ¨æ‰§è¡Œçš„ä»»åŠ¡
 	 */
 	@Test
 	public void testQueryTaskByAssignee(){
 		ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
 		List<Task> taskList = processEngine.getTaskService()
 		.createTaskQuery()
-		.taskAssignee("ÕÅÈı")
+		.taskAssignee("å¼ ä¸‰")
 		.list();
 		for(Task task:taskList){
 			System.out.print("taskid:"+task.getId()+",");
@@ -111,17 +111,17 @@ public class PITest {
 	}
 	
 	/*
-	 * ¿ÉÒÔ¸ù¾İ
+	 * å¯ä»¥æ ¹æ®
 	 *     executionid
 	 *     piid
 	 *     pdkey
 	 *     pdid
-	 *     ¶¼¿ÉÒÔ¹ıÂËÈÎÎñ
-	 *     µ«ÊÇ¸ù¾İassignee¹ıÂËÈÎÎñÊÇ×î³£ÓÃµÄ
+	 *     éƒ½å¯ä»¥è¿‡æ»¤ä»»åŠ¡
+	 *     ä½†æ˜¯æ ¹æ®assigneeè¿‡æ»¤ä»»åŠ¡æ˜¯æœ€å¸¸ç”¨çš„
 	 */
 	
 	/**
-	 * Íê³ÉÈÎÎñ
+	 * å®Œæˆä»»åŠ¡
 	 */
 	@Test
 	public void testFinishTask(){
@@ -131,9 +131,9 @@ public class PITest {
 	}
 	
 	/**
-	 * ÅĞ¶Ïµ±Ç°µÄÁ÷³ÌÊµÀıÒÑ¾­½áÊø
-	 *    ¸ù¾İpiid²éÑ¯Á÷³ÌÊµÀı£¬Èç¹û²éÑ¯³öÀ´µÄ½á¹ûÎªnull£¬Á÷³ÌÊµÀıÒÑ¾­½áÊøÁË
-	 *                          Èç¹û²»Îªnull,Á÷³ÌÊµÀıÃ»ÓĞ½áÊø
+	 * åˆ¤æ–­å½“å‰çš„æµç¨‹å®ä¾‹å·²ç»ç»“æŸ
+	 *    æ ¹æ®piidæŸ¥è¯¢æµç¨‹å®ä¾‹ï¼Œå¦‚æœæŸ¥è¯¢å‡ºæ¥çš„ç»“æœä¸ºnullï¼Œæµç¨‹å®ä¾‹å·²ç»ç»“æŸäº†
+	 *                          å¦‚æœä¸ä¸ºnull,æµç¨‹å®ä¾‹æ²¡æœ‰ç»“æŸ
 	 */
 	@Test
 	public void testIsEndPI(){

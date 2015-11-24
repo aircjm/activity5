@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="MySQL - itheima09_activiti5@localhost" uuid="5c60c100-674f-4c97-88ea-33a9539a44ab">
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <schema-pattern>itheima09_activiti5.*</schema-pattern>
+      <default-schemas>itheima09_activiti5.*</default-schemas>
+    </data-source>
+  </component>
+</project>

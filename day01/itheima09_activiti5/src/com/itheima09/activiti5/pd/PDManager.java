@@ -15,62 +15,62 @@ import org.activiti.engine.repository.ProcessDefinition;
 import org.junit.Test;
 
 /**
- * pdManager=process definition manager  Á÷³Ì¶¨Òå¹ÜÀí
+ * pdManager=process definition manager  æµç¨‹å®šä¹‰ç®¡ç†
  * @author zd
- *   Á÷³Ì¶¨Òå£º
- *      1¡¢*.bpmnºÍ*.png½Ğ×öÁ÷³Ì¶¨ÒåÎÄµµ
- *         pngÊÇÎªÁËÏÔÊ¾Í¼Æ¬µÄ
- *         bpmnÊÇÎªÁË½á¹¹»¯µÄÃèÊöÁ÷³Ì¶¨Òå
- *      2¡¢ÓĞkey,version,pdidÀ´È·¶¨Á÷³Ì¶¨ÒåµÄ
- *   ²Ù×÷£º
- *      1¡¢²¿Êğ
+ *   æµç¨‹å®šä¹‰ï¼š
+ *      1ã€*.bpmnå’Œ*.pngå«åšæµç¨‹å®šä¹‰æ–‡æ¡£
+ *         pngæ˜¯ä¸ºäº†æ˜¾ç¤ºå›¾ç‰‡çš„
+ *         bpmnæ˜¯ä¸ºäº†ç»“æ„åŒ–çš„æè¿°æµç¨‹å®šä¹‰
+ *      2ã€æœ‰key,version,pdidæ¥ç¡®å®šæµç¨‹å®šä¹‰çš„
+ *   æ“ä½œï¼š
+ *      1ã€éƒ¨ç½²
  *         classpath
  *         inputstream
  *         zipinputstream
- *      2¡¢²éÑ¯
- *      	²éÑ¯Á÷³Ì²¿Êğ
- *             ²éÑ¯ËùÓĞµÄÁ÷³Ì²¿Êğ
- *             ¸ù¾İdeploymentID²éÑ¯Á÷³Ì²¿Êğ
- *          ²éÑ¯Á÷³Ì¶¨Òå
- *             ²éÑ¯ËùÓĞµÄÁ÷³Ì¶¨Òå
- *             ¸ù¾İpdid²éÑ¯Á÷³Ì¶¨Òå
- *             ¸ù¾İpdkey²éÑ¯Á÷³Ì¶¨Òå
- *             ¸ù¾İ deploymentID²éÑ¯Á÷³Ì¶¨Òå
- *      3¡¢É¾³ı
- *      4¡¢²é¿´Á÷³ÌÍ¼
- *         ¿ÉÒÔ¸ù¾İpdid²éÑ¯Á÷³ÌÍ¼
- *         ¿ÉÒÔ¸ù¾İdeploymentID,resourceName²éÑ¯Á÷³ÌÍ¼
+ *      2ã€æŸ¥è¯¢
+ *      	æŸ¥è¯¢æµç¨‹éƒ¨ç½²
+ *             æŸ¥è¯¢æ‰€æœ‰çš„æµç¨‹éƒ¨ç½²
+ *             æ ¹æ®deploymentIDæŸ¥è¯¢æµç¨‹éƒ¨ç½²
+ *          æŸ¥è¯¢æµç¨‹å®šä¹‰
+ *             æŸ¥è¯¢æ‰€æœ‰çš„æµç¨‹å®šä¹‰
+ *             æ ¹æ®pdidæŸ¥è¯¢æµç¨‹å®šä¹‰
+ *             æ ¹æ®pdkeyæŸ¥è¯¢æµç¨‹å®šä¹‰
+ *             æ ¹æ® deploymentIDæŸ¥è¯¢æµç¨‹å®šä¹‰
+ *      3ã€åˆ é™¤
+ *      4ã€æŸ¥çœ‹æµç¨‹å›¾
+ *         å¯ä»¥æ ¹æ®pdidæŸ¥è¯¢æµç¨‹å›¾
+ *         å¯ä»¥æ ¹æ®deploymentID,resourceNameæŸ¥è¯¢æµç¨‹å›¾
  */
 public class PDManager {
 	/**
-	 * 1¡¢Éæ¼°µ½µÄ±í
-	 *    act_re_deployment  ²¿Êğ±í
-	 *       1¡¢ËµÃ÷
-	 *           ÃèÊöµÄÊÇÒ»´Î¶¯×÷,Ã¿²¿ÊğÒ»´Î£¬ÔÚ¸Ã±íÖĞÔö¼ÓÒ»ĞĞ¼ÇÂ¼
-	 *       2¡¢×Ö¶Î
-	 *           ID_: ²¿ÊğID
-	 *    act_re_procdef     Á÷³Ì¶¨Òå±í
-	 *       1¡¢ËµÃ÷
-	 *           ÊÇÓÃÀ´ÃèÊöÁ÷³Ì¶¨ÒåµÄ
-	 *           Èç¹ûkeyÖµ»òÕßnameÖµ·¢Éú±ä»¯£¬Ïàµ±ÓÚÒ»¸öÈ«ĞÂµÄÁ÷³Ì¶¨Òå£¬Õâ¸öÊ±ºòÔÙ´Î²¿Êğ£¬°æ±¾ºÅ´Ó1¿ªÊ¼¼ÆËã
-	 *       2¡¢×Ö¶Î
-	 *           name_:Á÷³Ì¶¨ÒåÃû³Æ
-	 *           key_:Á÷³Ì¶¨Òåkey
-	 *           version_:°æ±¾
-	 *           deployment_id_:²¿ÊğID
-	 *           pdid:Á÷³Ì¶¨ÒåID  {processKey}:{processVersion}:Ëæ»úÊı
-	 *    act_ge_bytearry    Í¨ÓÃÊı¾İ±í  ¸Ã±í´æ·ÅÁËhellworld.bpmnºÍhelloworld.pngÊı¾İ
-	 *       1¡¢ËµÃ÷
-	 *             ÔÚ²¿ÊğµÄÊ±ºò£¬²¿ÊğµÄbpmnºÍpng¶¼´æ·ÅÔÚ¸Ã±íÖĞ
-	 *       2¡¢×Ö¶Î
-	 *             deploymentID:²¿ÊğID  ½«À´¿ÉÒÔ¸ù¾İ²¿ÊğID²éÑ¯Í¼Æ¬
+	 * 1ã€æ¶‰åŠåˆ°çš„è¡¨
+	 *    act_re_deployment  éƒ¨ç½²è¡¨
+	 *       1ã€è¯´æ˜
+	 *           æè¿°çš„æ˜¯ä¸€æ¬¡åŠ¨ä½œ,æ¯éƒ¨ç½²ä¸€æ¬¡ï¼Œåœ¨è¯¥è¡¨ä¸­å¢åŠ ä¸€è¡Œè®°å½•
+	 *       2ã€å­—æ®µ
+	 *           ID_: éƒ¨ç½²ID
+	 *    act_re_procdef     æµç¨‹å®šä¹‰è¡¨
+	 *       1ã€è¯´æ˜
+	 *           æ˜¯ç”¨æ¥æè¿°æµç¨‹å®šä¹‰çš„
+	 *           å¦‚æœkeyå€¼æˆ–è€…nameå€¼å‘ç”Ÿå˜åŒ–ï¼Œç›¸å½“äºä¸€ä¸ªå…¨æ–°çš„æµç¨‹å®šä¹‰ï¼Œè¿™ä¸ªæ—¶å€™å†æ¬¡éƒ¨ç½²ï¼Œç‰ˆæœ¬å·ä»1å¼€å§‹è®¡ç®—
+	 *       2ã€å­—æ®µ
+	 *           name_:æµç¨‹å®šä¹‰åç§°
+	 *           key_:æµç¨‹å®šä¹‰key
+	 *           version_:ç‰ˆæœ¬
+	 *           deployment_id_:éƒ¨ç½²ID
+	 *           pdid:æµç¨‹å®šä¹‰ID  {processKey}:{processVersion}:éšæœºæ•°
+	 *    act_ge_bytearry    é€šç”¨æ•°æ®è¡¨  è¯¥è¡¨å­˜æ”¾äº†hellworld.bpmnå’Œhelloworld.pngæ•°æ®
+	 *       1ã€è¯´æ˜
+	 *             åœ¨éƒ¨ç½²çš„æ—¶å€™ï¼Œéƒ¨ç½²çš„bpmnå’Œpngéƒ½å­˜æ”¾åœ¨è¯¥è¡¨ä¸­
+	 *       2ã€å­—æ®µ
+	 *             deploymentID:éƒ¨ç½²ID  å°†æ¥å¯ä»¥æ ¹æ®éƒ¨ç½²IDæŸ¥è¯¢å›¾ç‰‡
 	 */
 	/**
-	 * ¸ù¾İclasspath½øĞĞ²¿Êğ
+	 * æ ¹æ®classpathè¿›è¡Œéƒ¨ç½²
 	 */
 	@Test
 	public void testDeploy_Classpath(){
-		//µÃµ½Ò»¸öÄ¬ÈÏµÄÁ÷³ÌÒıÇæ
+		//å¾—åˆ°ä¸€ä¸ªé»˜è®¤çš„æµç¨‹å¼•æ“
 		ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
 		Deployment deployment = processEngine.getRepositoryService()
 		.createDeployment()
@@ -82,7 +82,7 @@ public class PDManager {
 	}
 	
 	/**
-	 * ¸ù¾İinputStream½øĞĞ²¿Êğ
+	 * æ ¹æ®inputStreamè¿›è¡Œéƒ¨ç½²
 	 */
 	@Test
 	public void testDeploy_Inputstream(){
@@ -97,7 +97,7 @@ public class PDManager {
 	}
 	
 	/**
-	 * ¸ù¾İzipinputstream½øĞĞ²¿Êğ
+	 * æ ¹æ®zipinputstreamè¿›è¡Œéƒ¨ç½²
 	 */
 	@Test
 	public void testDeploy_ZipinputStream(){
@@ -114,13 +114,13 @@ public class PDManager {
 	
 	
 	/**
-	 * ²éÑ¯ËùÓĞµÄÁ÷³Ì²¿Êğ
+	 * æŸ¥è¯¢æ‰€æœ‰çš„æµç¨‹éƒ¨ç½²
 	 */
 	@Test
 	public void testQueryDeployment(){
 		ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
 		List<Deployment> dList = processEngine.getRepositoryService()
-		.createDeploymentQuery()//´´½¨Ò»¸ö²¿Êğ²éÑ¯
+		.createDeploymentQuery()//åˆ›å»ºä¸€ä¸ªéƒ¨ç½²æŸ¥è¯¢
 		.list();
 		for(Deployment deployment:dList){
 			System.out.println(deployment.getId());
@@ -128,20 +128,20 @@ public class PDManager {
 	}
 	
 	/**
-	 * ¸ù¾İ²¿ÊğID²éÑ¯²¿Êğ
+	 * æ ¹æ®éƒ¨ç½²IDæŸ¥è¯¢éƒ¨ç½²
 	 */
 	@Test
 	public void testQueryDeploymentByID(){
 		ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
 		Deployment deployment = processEngine.getRepositoryService()
 		.createDeploymentQuery()
-		.deploymentId("1")   //²éÑ¯deploymentidÎª1µÄ²¿Êğ
+		.deploymentId("1")   //æŸ¥è¯¢deploymentidä¸º1çš„éƒ¨ç½²
 		.singleResult();
 		System.out.println(deployment.getId());
 	}
 	
 	/**
-	 * ²éÑ¯ËùÓĞµÄÁ÷³Ì¶¨Òå
+	 * æŸ¥è¯¢æ‰€æœ‰çš„æµç¨‹å®šä¹‰
 	 */
 	@Test
 	public void testQueryPD(){
@@ -157,7 +157,7 @@ public class PDManager {
 	}
 	
 	/**
-	 * ¸ù¾İpdid²éÑ¯Á÷³Ì¶¨Òå
+	 * æ ¹æ®pdidæŸ¥è¯¢æµç¨‹å®šä¹‰
 	 */
 	@Test
 	public void testQueryPDByPDID(){
@@ -172,7 +172,7 @@ public class PDManager {
 	}
 	
 	/**
-	 * ¸ù¾İpdkey²éÑ¯Á÷³Ì¶¨Òå
+	 * æ ¹æ®pdkeyæŸ¥è¯¢æµç¨‹å®šä¹‰
 	 */
 	@Test
 	public void testQueryPDByPDKEY(){
@@ -189,24 +189,24 @@ public class PDManager {
 	}
 	
 	/**
-	 * ¸ù¾İdeploymentID²éÑ¯Á÷³Ì¶¨Òå   deploymentIDºÍpdidÊÇÏà¶ÔÓ¦µÄ
+	 * æ ¹æ®deploymentIDæŸ¥è¯¢æµç¨‹å®šä¹‰   deploymentIDå’Œpdidæ˜¯ç›¸å¯¹åº”çš„
 	 */
 	
 	/**
-	 * É¾³ı
-	 *    Ö»ÄÜ¸ù¾İdeploymentID½øĞĞÉ¾³ı
+	 * åˆ é™¤
+	 *    åªèƒ½æ ¹æ®deploymentIDè¿›è¡Œåˆ é™¤
 	 */
 	@Test
 	public void testDelete(){
 		ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
 //		processEngine.getRepositoryService()
-//		.deleteDeployment("1");//ÓÃ¸ÃAPIÖ»ÄÜÉ¾³ıÁ÷³Ì¶¨ÒåµÄÄÚÈİºÍ²¿ÊğµÄÄÚÈİ
+//		.deleteDeployment("1");//ç”¨è¯¥APIåªèƒ½åˆ é™¤æµç¨‹å®šä¹‰çš„å†…å®¹å’Œéƒ¨ç½²çš„å†…å®¹
 		processEngine.getRepositoryService()
-		.deleteDeployment("1", true);//É¾³ıÁË¹ØÓÚdeploymentIDÎª1µÄËùÓĞµÄÊı¾İ£¬°üÀ¨£ºÁ÷³Ì¶¨Òå¡¢Á÷³Ì²¿Êğ¡¢ÈÎÎñµÈĞÅÏ¢
+		.deleteDeployment("1", true);//åˆ é™¤äº†å…³äºdeploymentIDä¸º1çš„æ‰€æœ‰çš„æ•°æ®ï¼ŒåŒ…æ‹¬ï¼šæµç¨‹å®šä¹‰ã€æµç¨‹éƒ¨ç½²ã€ä»»åŠ¡ç­‰ä¿¡æ¯
 	}
 	
 	/**
-	 * ²éÑ¯Á÷³ÌÍ¼
+	 * æŸ¥è¯¢æµç¨‹å›¾
 	 */
 	@Test
 	public void showImage() throws Exception{

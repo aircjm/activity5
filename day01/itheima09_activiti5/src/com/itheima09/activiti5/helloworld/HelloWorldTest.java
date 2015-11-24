@@ -5,62 +5,63 @@ import org.activiti.engine.ProcessEngines;
 import org.junit.Test;
 
 /*
- * 1¡¢»­Á÷³ÌÍ¼
- * 2¡¢°Ñ¸ÃÁ÷³Ì²¿Êğµ½activiti5µÄÒıÇæÖĞ
- * 3¡¢Æô¶¯Á÷³ÌÊµÀı
- * 4¡¢Çë¼Ù
- * 5¡¢²¿ÃÅ¾­ÀíÉóÅú
- * 6¡¢×Ü¾­ÀíÉóÅú
+ * 1ã€ç”»æµç¨‹å›¾
+ * 2ã€æŠŠè¯¥æµç¨‹éƒ¨ç½²åˆ°activiti5çš„å¼•æ“ä¸­
+ * 3ã€å¯åŠ¨æµç¨‹å®ä¾‹
+ * 4ã€è¯·å‡
+ * 5ã€éƒ¨é—¨ç»ç†å®¡æ‰¹
+ * 6ã€æ€»ç»ç†å®¡æ‰¹
  */
 public class HelloWorldTest {
 	/**
-	 * °ÑÁ÷³ÌÍ¼²¿Êğµ½Á÷³ÌÒıÇæÖĞ
+	 * æŠŠæµç¨‹å›¾éƒ¨ç½²åˆ°æµç¨‹å¼•æ“ä¸­
 	 */
 	@Test
 	public void testDeploy(){
-		//»ñÈ¡Á÷³ÌÒıÇæ
+		//è·å–æµç¨‹å¼•æ“
 		ProcessEngine processEngine =  ProcessEngines.getDefaultProcessEngine();
 		processEngine.getRepositoryService()
 		.createDeployment()
+		//éƒ¨ç½²æµç¨‹å›¾
 		.addClasspathResource("com/itheima09/activiti5/helloworld/helloworld.bpmn")
 		.addClasspathResource("com/itheima09/activiti5/helloworld/helloworld.png")
 		.deploy();
 	}
 	
 	/**
-	 * Æô¶¯Á÷³ÌÊµÀı
+	 * å¯åŠ¨æµç¨‹å®ä¾‹
 	 */
 	@Test
 	public void testStartProcessInstance(){
-		//pdkeyÊÇÁ÷³Ì¶¨ÒåµÄÃû³Æ
-		String pdkey = "myProcess";
+		//pdkeyæ˜¯æµç¨‹å®šä¹‰çš„åç§° å¯¹åº”çš„æ˜¯act_re_procdefè¡¨ä¸­çš„KEY_
+		String pdkey = "itheima09";
 		ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
 		processEngine.getRuntimeService()
 		.startProcessInstanceByKey(pdkey);
 	}
 	
 	/**
-	 * Íê³ÉÇë¼ÙÉêÇëµÄÈÎÎñ
+	 * å®Œæˆè¯·å‡ç”³è¯·çš„ä»»åŠ¡
 	 */
 	@Test
 	public void testFinishTask_Applicator(){
 		ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
 		processEngine.getTaskService()
-		.complete("104");
+		.complete("201");
 	}
 	
 	/**
-	 * Íê³É²¿ÃÅ¾­ÀíÉóÅúµÄÈÎÎñ
+	 * å®Œæˆéƒ¨é—¨ç»ç†å®¡æ‰¹çš„ä»»åŠ¡
 	 */
 	@Test
 	public void testFinshTask_ManagerApprove(){
 		ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
 		processEngine.getTaskService()
-		.complete("202");
+		.complete("204");
 	}
 	
 	/**
-	 * Íê³É×Ü¾­ÀíÉóÅúµÄÈÎÎñ
+	 * å®Œæˆæ€»ç»ç†å®¡æ‰¹çš„ä»»åŠ¡
 	 */
 	@Test
 	public void testFinshTask_BossApprove(){

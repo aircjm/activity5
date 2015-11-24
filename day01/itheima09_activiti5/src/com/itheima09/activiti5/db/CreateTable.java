@@ -9,28 +9,26 @@ public class CreateTable {
 	public void testCreateTable() {
 		ProcessEngineConfiguration configuration = ProcessEngineConfiguration
 				.createStandaloneProcessEngineConfiguration();
-		// Êı¾İ¿âÅäÖÃ
+		// æ•°æ®åº“é…ç½®
 		configuration.setJdbcDriver("com.mysql.jdbc.Driver");
-		configuration
-				.setJdbcUrl("jdbc:mysql://localhost:3306/itheima09_activiti5?useUnicode=true&characterEncoding=utf8");
+		configuration.setJdbcUrl("jdbc:mysql://localhost:3306/itheima09_activiti5?useUnicode=true&characterEncoding=utf8");
 		configuration.setJdbcUsername("root");
 		configuration.setJdbcPassword("root");
 
-		// Í¨¹ı¸ÃÅäÖÃ£¬ÓÃÀ´´´½¨ActivitiµÄ23ÕÅ±í
+		// é€šè¿‡è¯¥é…ç½®ï¼Œç”¨æ¥åˆ›å»ºActivitiçš„23å¼ è¡¨
 		/**
 		 * public static final String DB_SCHEMA_UPDATE_FALSE =
-		 * "false";//±íÊ¾²»ÄÜ×Ô¶¯´´½¨±í£¬Ö¤Ã÷±íÊÇ´æÔÚµÄ
+		 * "false";//è¡¨ç¤ºä¸èƒ½è‡ªåŠ¨åˆ›å»ºè¡¨ï¼Œè¯æ˜è¡¨æ˜¯å­˜åœ¨çš„
 		 * 
 		 * public static final String DB_SCHEMA_UPDATE_CREATE_DROP =
-		 * "create-drop";ÏÈÉ¾³ı±í£¬ÔÙ´´½¨±í
+		 * "create-drop";å…ˆåˆ é™¤è¡¨ï¼Œå†åˆ›å»ºè¡¨
 		 * 
 		 * public static final String DB_SCHEMA_UPDATE_TRUE =
-		 * "true";//±íÊ¾Èç¹û±í²»´æÔÚ£¬¾Í»á×Ô¶¯´´½¨±í
+		 * "true";//è¡¨ç¤ºå¦‚æœè¡¨ä¸å­˜åœ¨ï¼Œå°±ä¼šè‡ªåŠ¨åˆ›å»ºè¡¨
 		 */
-		configuration
-				.setDatabaseSchemaUpdate(ProcessEngineConfiguration.DB_SCHEMA_UPDATE_TRUE);
+		configuration.setDatabaseSchemaUpdate(ProcessEngineConfiguration.DB_SCHEMA_UPDATE_TRUE);
 
-		// ´´½¨¹¤×÷Á÷µÄÁ÷³ÌÒıÇæ(´Ó¶ø´´½¨Êı¾İ¿âµÄ23ÕÅ±í)
+		// åˆ›å»ºå·¥ä½œæµçš„æµç¨‹å¼•æ“(ä»è€Œåˆ›å»ºæ•°æ®åº“çš„23å¼ è¡¨)
 		ProcessEngine processEngine = configuration.buildProcessEngine();
 		System.out.println(processEngine);
 	}
@@ -38,8 +36,7 @@ public class CreateTable {
 	@Test
 	public void testCreateTableFromResource() {
 		ProcessEngine processEngine = ProcessEngineConfiguration
-				.createProcessEngineConfigurationFromResource(
-						"activiti.cfg.xml")//
+				.createProcessEngineConfigurationFromResource("activiti.cfg.xml")
 				.buildProcessEngine();
 		System.out.println(processEngine);
 	}
