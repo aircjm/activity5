@@ -4,8 +4,5 @@
     <stateFile url="file://$PROJECT_DIR$/src/main/resources/helloworld.bpmn">
       <view grid="false" />
     </stateFile>
-    <stateFile url="file://$PROJECT_DIR$/src/main/java/com/activiti/helloworld/helloworld.bpmn">
-      <view grid="false" />
-    </stateFile>
   </component>
 </project>
